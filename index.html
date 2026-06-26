@@ -42,9 +42,9 @@
       aspect-ratio: 16 / 10;
       overflow: hidden;
       background:
-        radial-gradient(ellipse at 54% 88%, rgba(175, 205, 181, 0.26), transparent 18%),
-        radial-gradient(circle at 50% 50%, rgba(54, 96, 67, 0.18), transparent 44%),
-        linear-gradient(135deg, #030504 0%, #06100c 48%, #07160f 100%);
+        radial-gradient(ellipse at 50% 84%, rgba(105, 143, 112, 0.22), transparent 24%),
+        radial-gradient(circle at 50% 50%, rgba(42, 78, 55, 0.16), transparent 46%),
+        linear-gradient(135deg, #010504 0%, #04110b 48%, #07170f 100%);
     }
 
     #globe {
@@ -169,13 +169,15 @@
     .floor-glow {
       position: absolute;
       left: 50%;
-      bottom: 80px;
+      bottom: 88px;
       z-index: 0;
-      width: 660px;
-      height: 92px;
+      width: 760px;
+      height: 118px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(190, 214, 189, 0.18), rgba(91, 115, 91, 0.075) 48%, transparent 76%);
-      filter: blur(26px);
+      background:
+        radial-gradient(ellipse at 50% 48%, rgba(188, 215, 190, 0.16), rgba(100, 132, 101, 0.08) 42%, transparent 72%),
+        radial-gradient(ellipse at 50% 62%, rgba(35, 83, 54, 0.18), transparent 68%);
+      filter: blur(30px);
       transform: translateX(-50%);
     }
 
@@ -490,7 +492,7 @@
 
     const controls = globe.controls();
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.16;
+    controls.autoRotateSpeed = 0.2;
     controls.enableZoom = false;
     controls.enablePan = false;
     controls.rotateSpeed = 0.22;
