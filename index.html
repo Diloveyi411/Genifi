@@ -375,13 +375,13 @@
       canvas.height = size;
       const ctx = canvas.getContext("2d");
 
-      ctx.fillStyle = "#bdd7c6";
+      ctx.fillStyle = "#a9d7b8";
       ctx.fillRect(0, 0, size, size);
 
       const image = ctx.getImageData(0, 0, size, size);
       const data = image.data;
       for (let i = 0; i < data.length; i += 4) {
-        const noise = (Math.random() - 0.5) * 34;
+        const noise = (Math.random() - 0.5) * 54;
         data[i] = Math.max(0, Math.min(255, data[i] + noise));
         data[i + 1] = Math.max(0, Math.min(255, data[i + 1] + noise));
         data[i + 2] = Math.max(0, Math.min(255, data[i + 2] + noise));
@@ -389,13 +389,13 @@
       ctx.putImageData(image, 0, 0);
 
       ctx.globalCompositeOperation = "soft-light";
-      for (let i = 0; i < 1600; i += 1) {
+      for (let i = 0; i < 2600; i += 1) {
         const x = Math.random() * size;
         const y = Math.random() * size;
-        const length = 36 + Math.random() * 132;
+        const length = 28 + Math.random() * 112;
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(255, 255, 255, ${0.025 + Math.random() * 0.07})`;
-        ctx.lineWidth = 0.7 + Math.random() * 1.8;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.04 + Math.random() * 0.11})`;
+        ctx.lineWidth = 0.9 + Math.random() * 2.2;
         ctx.moveTo(x, y);
         ctx.bezierCurveTo(
           x + (Math.random() - 0.5) * 34,
@@ -410,14 +410,14 @@
       ctx.globalCompositeOperation = "source-over";
 
       ctx.filter = "blur(0.7px)";
-      for (let i = 0; i < 2200; i += 1) {
+      for (let i = 0; i < 4200; i += 1) {
         const x = Math.random() * size;
         const y = Math.random() * size;
         const radius = 0.6 + Math.random() * 1.8;
         ctx.beginPath();
         ctx.fillStyle = Math.random() > 0.5
-          ? `rgba(255, 255, 255, ${0.08 + Math.random() * 0.1})`
-          : `rgba(40, 95, 67, ${0.045 + Math.random() * 0.06})`;
+          ? `rgba(255, 255, 255, ${0.1 + Math.random() * 0.14})`
+          : `rgba(31, 96, 62, ${0.06 + Math.random() * 0.08})`;
         ctx.arc(x, y, radius, 0, Math.PI * 2);
         ctx.fill();
       }
@@ -435,25 +435,38 @@
     const milkGlassSurface = new Mesh(
       new SphereGeometry(99.7, 160, 160),
       new MeshPhysicalMaterial({
-        color: new Color("#cbe4d2"),
-        roughness: 0.94,
+        color: new Color("#a9d7b8"),
+        roughness: 0.97,
         metalness: 0.02,
         transmission: 0,
         thickness: 0.72,
         transparent: false,
         opacity: 1,
-        clearcoat: 0.14,
+        clearcoat: 0.08,
         clearcoatRoughness: 0.98,
         sheen: 0.34,
         sheenRoughness: 0.96,
-        sheenColor: new Color("#f3fff5"),
-        specularIntensity: 0.08,
+        sheenColor: new Color("#dff5e6"),
+        specularIntensity: 0.04,
         specularColor: new Color("#f6fff7"),
+        map: microTexture,
         bumpMap: microTexture,
-        bumpScale: 0.28
+        bumpScale: 0.58
       })
     );
     scene.add(milkGlassSurface);
+
+    const frostShell = new Mesh(
+      new SphereGeometry(100.05, 160, 160),
+      new MeshBasicMaterial({
+        color: new Color("#d8f4e2"),
+        map: microTexture,
+        transparent: true,
+        opacity: 0.18,
+        depthWrite: false
+      })
+    );
+    scene.add(frostShell);
 
     fetch("https://cdn.jsdelivr.net/npm/world-atlas/land-110m.json")
       .then((res) => res.json())
@@ -481,9 +494,9 @@
     const innerGlow = new Mesh(
       new SphereGeometry(100.2, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#d9f0df"),
+        color: new Color("#b8dfc3"),
         transparent: true,
-        opacity: 0.035,
+        opacity: 0.018,
         side: BackSide,
         blending: AdditiveBlending,
         depthWrite: false
@@ -494,9 +507,9 @@
     const outerShell = new Mesh(
       new SphereGeometry(100.4, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#d6ecdd"),
+        color: new Color("#bfe4ca"),
         transparent: true,
-        opacity: 0.026,
+        opacity: 0.018,
         wireframe: false,
         blending: AdditiveBlending,
         depthWrite: false
