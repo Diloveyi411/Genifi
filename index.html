@@ -8,13 +8,13 @@
     :root {
       --stage-w: 1440;
       --stage-h: 900;
-      --bg: #00120b;
-      --sage: #a9baad;
-      --line: rgba(229, 246, 235, 0.48);
-      --card-bg: rgba(10, 20, 15, 0.72);
-      --card-border: rgba(226, 248, 235, 0.2);
-      --text: rgba(247, 255, 250, 0.94);
-      --mint: #62eda2;
+      --bg: #f8faf7;
+      --sage: #c8ded0;
+      --line: rgba(96, 120, 112, 0.42);
+      --card-bg: rgba(255, 255, 255, 0.78);
+      --card-border: rgba(44, 64, 58, 0.12);
+      --text: rgba(17, 30, 27, 0.92);
+      --mint: #35c878;
     }
 
     * {
@@ -27,7 +27,7 @@
       height: 100%;
       margin: 0;
       overflow: hidden;
-      background: #020806;
+      background: #f8faf7;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
@@ -42,9 +42,10 @@
       aspect-ratio: 16 / 10;
       overflow: hidden;
       background:
-        radial-gradient(ellipse at 50% 84%, rgba(105, 143, 112, 0.22), transparent 24%),
-        radial-gradient(circle at 50% 50%, rgba(42, 78, 55, 0.16), transparent 46%),
-        linear-gradient(135deg, #010504 0%, #04110b 48%, #07170f 100%);
+        radial-gradient(ellipse at 50% 83%, rgba(92, 205, 139, 0.16), transparent 25%),
+        radial-gradient(circle at 52% 48%, rgba(175, 222, 195, 0.28), transparent 48%),
+        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.96), transparent 36%),
+        linear-gradient(135deg, #ffffff 0%, #f8faf6 46%, #edf5ed 100%);
     }
 
     #globe {
@@ -80,7 +81,7 @@
       stroke-width: 1.35;
       stroke-dasharray: 8 10;
       stroke-linecap: round;
-      filter: drop-shadow(0 0 8px rgba(98, 237, 162, 0.14));
+      filter: drop-shadow(0 2px 5px rgba(51, 83, 72, 0.08));
     }
 
     .orbit-motion {
@@ -89,15 +90,15 @@
     }
 
     .marker-core {
-      filter: drop-shadow(0 0 22px rgba(98, 237, 162, 0.38));
+      filter: drop-shadow(0 9px 18px rgba(24, 92, 60, 0.2));
     }
 
     .orbit-dot {
-      filter: drop-shadow(0 0 18px rgba(98, 237, 162, 0.5));
+      filter: drop-shadow(0 8px 18px rgba(53, 200, 120, 0.26));
     }
 
     .orbit-dot .dot-halo {
-      fill: rgba(98, 237, 162, 0.1);
+      fill: rgba(53, 200, 120, 0.12);
     }
 
     .orbit-dot .dot-core {
@@ -113,18 +114,19 @@
       min-height: 48px;
       padding: 0 16px;
       border: 1px solid var(--card-border);
-      border-radius: 9px;
+      border-radius: 8px;
       background: var(--card-bg);
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 18px 46px rgba(0, 0, 0, 0.32);
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        0 18px 42px rgba(23, 45, 38, 0.1),
+        0 2px 8px rgba(23, 45, 38, 0.07);
       color: var(--text);
       font-size: 15px;
       line-height: 1;
       white-space: nowrap;
       opacity: 0;
       transform: translateY(8px) scale(0.98);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px) saturate(1.08);
     }
 
     .card svg {
@@ -137,47 +139,47 @@
     }
 
     .card-bank {
-      left: 70px;
-      top: 326px;
+      left: 72px;
+      top: 236px;
       animation: cardBank 20s ease-in-out infinite;
     }
 
     .card-issuer {
-      left: 302px;
-      top: 598px;
+      left: 62px;
+      top: 386px;
       animation: cardIssuer 20s ease-in-out infinite;
     }
 
     .card-fx {
-      left: 804px;
-      top: 614px;
+      left: 224px;
+      top: 544px;
       animation: cardFx 20s ease-in-out infinite;
     }
 
     .card-stable {
-      left: 996px;
-      top: 282px;
+      left: 640px;
+      top: 660px;
       animation: cardStable 20s ease-in-out infinite;
     }
 
     .card-payout {
-      left: 458px;
-      top: 150px;
+      left: 1044px;
+      top: 558px;
       animation: cardPayout 20s ease-in-out infinite;
     }
 
     .floor-glow {
       position: absolute;
       left: 50%;
-      bottom: 88px;
+      bottom: 86px;
       z-index: 0;
-      width: 760px;
-      height: 118px;
+      width: 720px;
+      height: 130px;
       border-radius: 50%;
       background:
-        radial-gradient(ellipse at 50% 48%, rgba(188, 215, 190, 0.16), rgba(100, 132, 101, 0.08) 42%, transparent 72%),
-        radial-gradient(ellipse at 50% 62%, rgba(35, 83, 54, 0.18), transparent 68%);
-      filter: blur(30px);
+        radial-gradient(ellipse at 50% 48%, rgba(98, 207, 139, 0.24), rgba(145, 210, 164, 0.14) 42%, transparent 74%),
+        radial-gradient(ellipse at 50% 66%, rgba(57, 113, 75, 0.1), transparent 66%);
+      filter: blur(34px);
       transform: translateX(-50%);
     }
 
@@ -185,11 +187,11 @@
       position: absolute;
       inset: 0;
       z-index: 5;
-      opacity: 0.14;
+      opacity: 0.22;
       pointer-events: none;
       background-image:
         linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+        linear-gradient(90deg, rgba(46, 73, 62, 0.018) 1px, transparent 1px);
       background-size: 42px 42px;
       mask-image: radial-gradient(circle at 50% 50%, black 0%, black 50%, transparent 82%);
     }
@@ -198,15 +200,16 @@
       0%, 100% {
         border-color: var(--card-border);
         box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.08),
-          0 18px 46px rgba(0, 0, 0, 0.32);
+          inset 0 1px 0 rgba(255, 255, 255, 0.92),
+          0 18px 42px rgba(23, 45, 38, 0.1),
+          0 2px 8px rgba(23, 45, 38, 0.07);
       }
       35%, 65% {
-        border-color: rgba(183, 255, 217, 0.42);
+        border-color: rgba(53, 200, 120, 0.32);
         box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.12),
-          0 18px 46px rgba(0, 0, 0, 0.34),
-          0 0 30px rgba(52, 245, 161, 0.2);
+          inset 0 1px 0 rgba(255, 255, 255, 0.96),
+          0 18px 42px rgba(23, 45, 38, 0.12),
+          0 0 32px rgba(53, 200, 120, 0.18);
       }
     }
 
@@ -292,8 +295,8 @@
           <mpath href="#route-motion"></mpath>
         </animateMotion>
         <animate attributeName="opacity" dur="20s" repeatCount="indefinite" values="1;1;0;0;1;1" keyTimes="0;0.58;0.62;0.84;0.88;1"></animate>
-        <circle cx="0" cy="0" r="24" fill="rgba(52,245,161,0.09)"></circle>
-        <circle cx="0" cy="0" r="15" fill="rgba(6,22,14,0.84)" stroke="rgba(185,255,214,0.66)" stroke-width="1.1"></circle>
+        <circle cx="0" cy="0" r="24" fill="rgba(53,200,120,0.12)"></circle>
+        <circle cx="0" cy="0" r="15" fill="rgba(8,31,22,0.86)" stroke="rgba(53,200,120,0.56)" stroke-width="1.1"></circle>
         <image href="genifi-mark.png" x="-11" y="-11" width="22" height="22" preserveAspectRatio="xMidYMid meet"></image>
       </g>
     </svg>
@@ -350,21 +353,21 @@
       .showAtmosphere(false);
 
     const scene = globe.scene();
-    scene.add(new AmbientLight("#b5c5b7", 0.78));
+    scene.add(new AmbientLight("#f4fbf3", 1.12));
 
-    const keyLight = new DirectionalLight("#bdcdbc", 0.88);
-    keyLight.position.set(-220, 42, 190);
+    const keyLight = new DirectionalLight("#ffffff", 1.05);
+    keyLight.position.set(-230, 80, 210);
     scene.add(keyLight);
 
-    const fillLight = new DirectionalLight("#6f8978", 0.58);
-    fillLight.position.set(160, -80, 120);
+    const fillLight = new DirectionalLight("#a7d6b8", 0.72);
+    fillLight.position.set(150, -60, 130);
     scene.add(fillLight);
 
-    const rimLight = new PointLight("#c7d6c5", 1.65, 420);
-    rimLight.position.set(-130, -150, 230);
+    const rimLight = new PointLight("#74d89d", 1.15, 420);
+    rimLight.position.set(-120, -150, 230);
     scene.add(rimLight);
 
-    const hemiLight = new HemisphereLight("#bdcdbd", "#17241d", 0.74);
+    const hemiLight = new HemisphereLight("#ffffff", "#b4d4bd", 0.82);
     scene.add(hemiLight);
 
     const createMicroTexture = () => {
@@ -374,7 +377,7 @@
       canvas.height = size;
       const ctx = canvas.getContext("2d");
 
-      ctx.fillStyle = "#8e9f92";
+      ctx.fillStyle = "#bdd7c6";
       ctx.fillRect(0, 0, size, size);
 
       for (let i = 0; i < 3600; i += 1) {
@@ -382,7 +385,7 @@
         const y = Math.random() * size;
         const radius = 3 + Math.random() * 22;
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(231, 241, 230, ${0.055 + Math.random() * 0.12})`;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + Math.random() * 0.15})`;
         ctx.lineWidth = 0.4 + Math.random() * 0.85;
         ctx.arc(x, y, radius, Math.random() * Math.PI, Math.random() * Math.PI + Math.PI);
         ctx.stroke();
@@ -393,7 +396,7 @@
         const y = Math.random() * size;
         const length = 10 + Math.random() * 54;
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(28, 48, 35, ${0.032 + Math.random() * 0.075})`;
+        ctx.strokeStyle = `rgba(36, 102, 72, ${0.026 + Math.random() * 0.064})`;
         ctx.lineWidth = 0.3 + Math.random() * 0.55;
         ctx.moveTo(x, y);
         ctx.bezierCurveTo(
@@ -419,20 +422,20 @@
     const milkGlassSurface = new Mesh(
       new SphereGeometry(99.7, 160, 160),
       new MeshPhysicalMaterial({
-        color: new Color("#9daf9f"),
-        roughness: 0.86,
+        color: new Color("#cbe4d2"),
+        roughness: 0.82,
         metalness: 0.02,
         transmission: 0,
         thickness: 0.72,
         transparent: false,
         opacity: 1,
-        clearcoat: 0.24,
-        clearcoatRoughness: 0.94,
-        sheen: 0.22,
-        sheenRoughness: 0.94,
-        sheenColor: new Color("#c6d6c6"),
-        specularIntensity: 0.1,
-        specularColor: new Color("#b9c9b9"),
+        clearcoat: 0.3,
+        clearcoatRoughness: 0.9,
+        sheen: 0.28,
+        sheenRoughness: 0.88,
+        sheenColor: new Color("#f3fff5"),
+        specularIntensity: 0.16,
+        specularColor: new Color("#f6fff7"),
         bumpMap: microTexture,
         bumpScale: 0.42
       })
@@ -448,9 +451,9 @@
           .polygonsData(land)
           .polygonAltitude(0.012)
           .polygonCapMaterial(new MeshPhysicalMaterial({
-            color: new Color("#7a9281"),
+            color: new Color("#8bc6a1"),
             transparent: true,
-            opacity: 0.34,
+            opacity: 0.36,
             roughness: 0.88,
             clearcoat: 0.18,
             clearcoatRoughness: 0.96,
@@ -459,15 +462,15 @@
             bumpScale: 0.18
           }))
           .polygonSideColor(() => "rgba(0,0,0,0)")
-          .polygonStrokeColor(() => "rgba(228,240,226,0.58)");
+          .polygonStrokeColor(() => "rgba(53,124,89,0.42)");
       });
 
     const innerGlow = new Mesh(
       new SphereGeometry(100.2, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#d2dfd0"),
+        color: new Color("#f4fff5"),
         transparent: true,
-        opacity: 0.045,
+        opacity: 0.06,
         side: BackSide,
         blending: AdditiveBlending,
         depthWrite: false
@@ -478,9 +481,9 @@
     const outerShell = new Mesh(
       new SphereGeometry(100.4, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#d7e3d4"),
+        color: new Color("#ecfff0"),
         transparent: true,
-        opacity: 0.035,
+        opacity: 0.045,
         wireframe: false,
         blending: AdditiveBlending,
         depthWrite: false
