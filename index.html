@@ -251,10 +251,242 @@
     .card-fx { animation-name: cardFx, cardGlow; }
     .card-stable { animation-name: cardStable, cardGlow; }
     .card-payout { animation-name: cardPayout, cardGlow; }
+
+
+    .is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .landing {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px;
+      color: #0d211b;
+      background:
+        radial-gradient(ellipse at 50% 108%, rgba(188, 236, 207, 0.74), transparent 44%),
+        linear-gradient(180deg, #fbfcf9 0%, #f7faf5 48%, #e0f2e8 100%);
+      transition: opacity 420ms ease, visibility 420ms ease;
+    }
+
+    .landing::before {
+      content: "";
+      position: absolute;
+      left: -10vw;
+      bottom: -18vh;
+      width: 560px;
+      height: 560px;
+      border: 1.4px dashed rgba(48, 119, 82, 0.3);
+      border-radius: 50%;
+      transform: rotate(-18deg) scaleX(1.65);
+      pointer-events: none;
+    }
+
+    .landing-inner {
+      position: relative;
+      width: min(1120px, 100%);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 92px;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: #082018;
+      box-shadow: 0 18px 42px rgba(27, 83, 55, 0.16);
+    }
+
+    .brand-mark img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    .landing-kicker {
+      margin: 0 0 18px;
+      color: rgba(27, 50, 42, 0.62);
+      font-size: 15px;
+      font-weight: 650;
+      text-transform: uppercase;
+    }
+
+    .landing-title {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: 0.98;
+      font-weight: 680;
+      letter-spacing: 0;
+    }
+
+    .landing-copy {
+      max-width: 620px;
+      margin: 28px 0 52px;
+      color: rgba(27, 50, 42, 0.7);
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .prototype-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .prototype-option {
+      min-height: 166px;
+      padding: 22px;
+      border: 1px solid rgba(40, 68, 58, 0.13);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.86),
+        0 22px 52px rgba(28, 71, 49, 0.1);
+      color: #0d211b;
+      text-align: left;
+      cursor: pointer;
+      backdrop-filter: blur(18px) saturate(1.08);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .prototype-option:hover {
+      transform: translateY(-3px);
+      border-color: rgba(53, 200, 120, 0.38);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 26px 58px rgba(28, 71, 49, 0.14),
+        0 0 28px rgba(53, 200, 120, 0.14);
+    }
+
+    .option-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 28px;
+      border-radius: 999px;
+      background: rgba(53, 200, 120, 0.12);
+      color: #1f8b56;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .option-title {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 22px;
+      line-height: 1.12;
+      font-weight: 680;
+    }
+
+    .option-meta {
+      display: block;
+      color: rgba(27, 50, 42, 0.62);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .landing-status {
+      min-height: 22px;
+      margin-top: 18px;
+      color: rgba(27, 50, 42, 0.58);
+      font-size: 14px;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 22px;
+      left: 22px;
+      z-index: 12;
+      min-height: 40px;
+      padding: 0 15px;
+      border: 1px solid rgba(44, 64, 58, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 14px 32px rgba(23, 45, 38, 0.09);
+      color: rgba(17, 30, 27, 0.82);
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+    }
+
+    @media (max-width: 860px) {
+      .landing {
+        align-items: flex-start;
+        padding: 32px 18px;
+        overflow-y: auto;
+      }
+
+      .brand-row {
+        margin-bottom: 56px;
+      }
+
+      .landing-copy {
+        font-size: 17px;
+        margin-bottom: 32px;
+      }
+
+      .prototype-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <div class="stage">
+  <main class="landing" id="landingView">
+    <section class="landing-inner" aria-labelledby="landing-title">
+      <div class="brand-row">
+        <span class="brand-mark"><img src="genifi-mark.png" alt=""></span>
+        <span class="brand-name">Genifi</span>
+      </div>
+      <p class="landing-kicker">Prototype review</p>
+      <h1 class="landing-title" id="landing-title">Genifi visual system prototypes</h1>
+      <p class="landing-copy">Choose a workstream preview. The globe prototype is active; implementation and brand asset directions are staged for the next pass.</p>
+      <div class="prototype-grid" aria-label="Prototype options">
+        <button class="prototype-option" type="button" data-view="prototype">
+          <span class="option-index">01</span>
+          <span class="option-title">Globe prototype</span>
+          <span class="option-meta">Interactive hero globe, routing orbit, cards, and motion behavior.</span>
+        </button>
+        <button class="prototype-option" type="button" data-status="Globe web implementation is coming soon.">
+          <span class="option-index">02</span>
+          <span class="option-title">Globe web implementation</span>
+          <span class="option-meta">Coming soon. Production translation and implementation notes.</span>
+        </button>
+        <button class="prototype-option" type="button" data-status="Brand asset prototype is coming soon. Direction D will live here.">
+          <span class="option-index">03</span>
+          <span class="option-title">Brand asset</span>
+          <span class="option-meta">Coming soon. Direction D supporting asset exploration.</span>
+        </button>
+      </div>
+      <p class="landing-status" id="landingStatus" role="status"></p>
+    </section>
+  </main>
+
+  <div class="stage is-hidden" id="prototypeScreen">
+    <button class="back-home" id="backHome" type="button">Back</button>
     <svg class="orbit-back" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <path d="M168.9 407.3 C187.7 272.9 451.3 184.2 757.6 209.2 C1063.9 234.1 1297.1 363.2 1278.3 497.7"></path>
     </svg>
@@ -375,58 +607,43 @@
       canvas.height = size;
       const ctx = canvas.getContext("2d");
 
-      ctx.fillStyle = "#a9d7b8";
+      ctx.fillStyle = "#bdd7c6";
       ctx.fillRect(0, 0, size, size);
 
-      const image = ctx.getImageData(0, 0, size, size);
-      const data = image.data;
-      for (let i = 0; i < data.length; i += 4) {
-        const noise = (Math.random() - 0.5) * 54;
-        data[i] = Math.max(0, Math.min(255, data[i] + noise));
-        data[i + 1] = Math.max(0, Math.min(255, data[i + 1] + noise));
-        data[i + 2] = Math.max(0, Math.min(255, data[i + 2] + noise));
+      for (let i = 0; i < 3600; i += 1) {
+        const x = Math.random() * size;
+        const y = Math.random() * size;
+        const radius = 3 + Math.random() * 22;
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + Math.random() * 0.15})`;
+        ctx.lineWidth = 0.4 + Math.random() * 0.85;
+        ctx.arc(x, y, radius, Math.random() * Math.PI, Math.random() * Math.PI + Math.PI);
+        ctx.stroke();
       }
-      ctx.putImageData(image, 0, 0);
 
-      ctx.globalCompositeOperation = "soft-light";
       for (let i = 0; i < 2600; i += 1) {
         const x = Math.random() * size;
         const y = Math.random() * size;
-        const length = 28 + Math.random() * 112;
+        const length = 10 + Math.random() * 54;
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(255, 255, 255, ${0.04 + Math.random() * 0.11})`;
-        ctx.lineWidth = 0.9 + Math.random() * 2.2;
+        ctx.strokeStyle = `rgba(36, 102, 72, ${0.026 + Math.random() * 0.064})`;
+        ctx.lineWidth = 0.3 + Math.random() * 0.55;
         ctx.moveTo(x, y);
         ctx.bezierCurveTo(
-          x + (Math.random() - 0.5) * 34,
-          y + length * 0.34,
-          x + (Math.random() - 0.5) * 52,
-          y + length * 0.68,
-          x + (Math.random() - 0.5) * 28,
-          y + length
+          x + Math.random() * length,
+          y - Math.random() * length,
+          x - Math.random() * length,
+          y + Math.random() * length,
+          x + Math.random() * length * 0.4,
+          y + Math.random() * length * 0.5
         );
         ctx.stroke();
       }
-      ctx.globalCompositeOperation = "source-over";
-
-      ctx.filter = "blur(0.7px)";
-      for (let i = 0; i < 4200; i += 1) {
-        const x = Math.random() * size;
-        const y = Math.random() * size;
-        const radius = 0.6 + Math.random() * 1.8;
-        ctx.beginPath();
-        ctx.fillStyle = Math.random() > 0.5
-          ? `rgba(255, 255, 255, ${0.1 + Math.random() * 0.14})`
-          : `rgba(31, 96, 62, ${0.06 + Math.random() * 0.08})`;
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.filter = "none";
 
       const texture = new CanvasTexture(canvas);
       texture.wrapS = RepeatWrapping;
       texture.wrapT = RepeatWrapping;
-      texture.repeat.set(1.7, 1.05);
+      texture.repeat.set(2.4, 1.2);
       return texture;
     };
 
@@ -435,38 +652,25 @@
     const milkGlassSurface = new Mesh(
       new SphereGeometry(99.7, 160, 160),
       new MeshPhysicalMaterial({
-        color: new Color("#a9d7b8"),
-        roughness: 0.97,
+        color: new Color("#cbe4d2"),
+        roughness: 0.82,
         metalness: 0.02,
         transmission: 0,
         thickness: 0.72,
         transparent: false,
         opacity: 1,
-        clearcoat: 0.08,
-        clearcoatRoughness: 0.98,
-        sheen: 0.34,
-        sheenRoughness: 0.96,
-        sheenColor: new Color("#dff5e6"),
-        specularIntensity: 0.04,
+        clearcoat: 0.3,
+        clearcoatRoughness: 0.9,
+        sheen: 0.28,
+        sheenRoughness: 0.88,
+        sheenColor: new Color("#f3fff5"),
+        specularIntensity: 0.16,
         specularColor: new Color("#f6fff7"),
-        map: microTexture,
         bumpMap: microTexture,
-        bumpScale: 0.58
+        bumpScale: 0.42
       })
     );
     scene.add(milkGlassSurface);
-
-    const frostShell = new Mesh(
-      new SphereGeometry(100.05, 160, 160),
-      new MeshBasicMaterial({
-        color: new Color("#d8f4e2"),
-        map: microTexture,
-        transparent: true,
-        opacity: 0.18,
-        depthWrite: false
-      })
-    );
-    scene.add(frostShell);
 
     fetch("https://cdn.jsdelivr.net/npm/world-atlas/land-110m.json")
       .then((res) => res.json())
@@ -494,9 +698,9 @@
     const innerGlow = new Mesh(
       new SphereGeometry(100.2, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#b8dfc3"),
+        color: new Color("#d9f0df"),
         transparent: true,
-        opacity: 0.018,
+        opacity: 0.035,
         side: BackSide,
         blending: AdditiveBlending,
         depthWrite: false
@@ -507,9 +711,9 @@
     const outerShell = new Mesh(
       new SphereGeometry(100.4, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#bfe4ca"),
+        color: new Color("#d6ecdd"),
         transparent: true,
-        opacity: 0.018,
+        opacity: 0.026,
         wireframe: false,
         blending: AdditiveBlending,
         depthWrite: false
@@ -537,6 +741,31 @@
 
     window.addEventListener("resize", resize);
     resize();
+
+    const landingView = document.getElementById("landingView");
+    const prototypeScreen = document.getElementById("prototypeScreen");
+    const landingStatus = document.getElementById("landingStatus");
+    const backHome = document.getElementById("backHome");
+
+    document.querySelectorAll(".prototype-option").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button.dataset.view === "prototype") {
+          landingView.classList.add("is-hidden");
+          prototypeScreen.classList.remove("is-hidden");
+          requestAnimationFrame(resize);
+          return;
+        }
+
+        landingStatus.textContent = button.dataset.status || "Coming soon.";
+      });
+    });
+
+    backHome.addEventListener("click", () => {
+      prototypeScreen.classList.add("is-hidden");
+      landingView.classList.remove("is-hidden");
+      landingStatus.textContent = "";
+    });
+
   </script>
 </body>
 </html>
