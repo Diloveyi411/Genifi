@@ -38,13 +38,12 @@
 
     .stage {
       position: relative;
-      width: min(100vw, calc(100vh * 1.6));
-      aspect-ratio: 16 / 10;
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
       background:
         radial-gradient(ellipse at 50% 83%, rgba(92, 205, 139, 0.16), transparent 25%),
         radial-gradient(circle at 52% 48%, rgba(175, 222, 195, 0.28), transparent 48%),
-        radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.96), transparent 36%),
         linear-gradient(135deg, #ffffff 0%, #f8faf6 46%, #edf5ed 100%);
     }
 
@@ -353,10 +352,10 @@
       .showAtmosphere(false);
 
     const scene = globe.scene();
-    scene.add(new AmbientLight("#f4fbf3", 1.12));
+    scene.add(new AmbientLight("#d9eadb", 0.9));
 
-    const keyLight = new DirectionalLight("#ffffff", 1.05);
-    keyLight.position.set(-230, 80, 210);
+    const keyLight = new DirectionalLight("#d7ebdc", 0.72);
+    keyLight.position.set(-230, 34, 210);
     scene.add(keyLight);
 
     const fillLight = new DirectionalLight("#a7d6b8", 0.72);
@@ -367,7 +366,7 @@
     rimLight.position.set(-120, -150, 230);
     scene.add(rimLight);
 
-    const hemiLight = new HemisphereLight("#ffffff", "#b4d4bd", 0.82);
+    const hemiLight = new HemisphereLight("#e5f2e5", "#b4d4bd", 0.68);
     scene.add(hemiLight);
 
     const createMicroTexture = () => {
@@ -468,9 +467,9 @@
     const innerGlow = new Mesh(
       new SphereGeometry(100.2, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#f4fff5"),
+        color: new Color("#d9f0df"),
         transparent: true,
-        opacity: 0.06,
+        opacity: 0.035,
         side: BackSide,
         blending: AdditiveBlending,
         depthWrite: false
@@ -481,9 +480,9 @@
     const outerShell = new Mesh(
       new SphereGeometry(100.4, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#ecfff0"),
+        color: new Color("#d6ecdd"),
         transparent: true,
-        opacity: 0.045,
+        opacity: 0.026,
         wireframe: false,
         blending: AdditiveBlending,
         depthWrite: false
@@ -496,9 +495,12 @@
     const controls = globe.controls();
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.2;
-    controls.enableZoom = false;
+    controls.enableZoom = true;
     controls.enablePan = false;
     controls.rotateSpeed = 0.22;
+    controls.zoomSpeed = 0.6;
+    controls.minDistance = 170;
+    controls.maxDistance = 520;
 
     const resize = () => {
       const rect = globeElement.getBoundingClientRect();
