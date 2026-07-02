@@ -431,6 +431,234 @@
       backdrop-filter: blur(16px);
     }
 
+    .asset-screen {
+      --asset-bg-top: #bfded0;
+      --asset-bg-bottom: #e4f2e8;
+      --asset-ink: #10211b;
+      --asset-muted: rgba(16, 33, 27, 0.64);
+      --asset-panel: rgba(255, 255, 255, 0.78);
+      --asset-panel-border: rgba(29, 58, 45, 0.12);
+      --asset-button: rgba(255, 255, 255, 0.62);
+      --asset-glow: 1.03;
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      overflow: hidden;
+      color: var(--asset-ink);
+      background:
+        radial-gradient(ellipse at 50% 92%, rgba(102, 190, 136, calc(var(--asset-glow) * 0.28)), transparent 44%),
+        radial-gradient(circle at 58% 38%, rgba(235, 255, 242, calc(var(--asset-glow) * 0.24)), transparent 30%),
+        radial-gradient(circle at 18% 20%, rgba(143, 188, 166, 0.24), transparent 28%),
+        linear-gradient(180deg, var(--asset-bg-top) 0%, var(--asset-bg-bottom) 100%);
+      transition: opacity 420ms ease, visibility 420ms ease;
+    }
+
+    .asset-screen[data-theme="dark"] {
+      --asset-bg-top: #07130f;
+      --asset-bg-bottom: #00120b;
+      --asset-ink: #f1fff7;
+      --asset-muted: rgba(225, 255, 236, 0.66);
+      --asset-panel: rgba(4, 18, 12, 0.76);
+      --asset-panel-border: rgba(184, 248, 209, 0.16);
+      --asset-button: rgba(255, 255, 255, 0.07);
+    }
+
+    .asset-screen .back-home {
+      left: auto;
+      right: 28px;
+      top: 28px;
+      z-index: 15;
+      color: var(--asset-ink);
+      border-color: var(--asset-panel-border);
+      background: var(--asset-panel);
+    }
+
+    .asset-note {
+      position: fixed;
+      left: 40px;
+      top: 36px;
+      z-index: 14;
+      max-width: 390px;
+      pointer-events: none;
+    }
+
+    .asset-kicker {
+      margin: 0 0 14px;
+      color: var(--asset-muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .asset-title {
+      max-width: 390px;
+      margin: 0;
+      color: var(--asset-ink);
+      font-size: clamp(42px, 5.4vw, 78px);
+      line-height: 0.95;
+      font-weight: 720;
+      letter-spacing: 0;
+    }
+
+    .asset-copy {
+      max-width: 360px;
+      margin: 20px 0 0;
+      color: var(--asset-muted);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .asset-sphere {
+      --asset-size: 512px;
+      --video-scale: 1.17;
+      --video-x: 50%;
+      --video-y: 55%;
+      --shell-opacity: 0.34;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 12;
+      width: var(--asset-size);
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 999px;
+      clip-path: circle(50% at 50% 50%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0 99.2%, transparent 100%);
+      mask-image: radial-gradient(circle at 50% 50%, #000 0 99.2%, transparent 100%);
+      transform: translate(-50%, -50%);
+      background: transparent;
+      box-shadow: 0 18px 54px rgba(25, 99, 61, 0.12);
+      isolation: isolate;
+      pointer-events: none;
+    }
+
+    .asset-sphere::before,
+    .asset-sphere::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .asset-sphere::before {
+      background:
+        radial-gradient(circle at 31% 17%, rgba(255, 255, 255, calc(var(--shell-opacity) * 0.9)), transparent 12%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, calc(var(--shell-opacity) * 0.46)), transparent 13%),
+        radial-gradient(circle at 50% 50%, transparent 61%, rgba(244, 255, 248, calc(var(--shell-opacity) * 0.18)) 74%, rgba(244, 255, 248, calc(var(--shell-opacity) * 0.95)) 93%, transparent 100%);
+      mix-blend-mode: screen;
+    }
+
+    .asset-sphere::after {
+      border: 2px solid rgba(244, 255, 248, calc(var(--shell-opacity) * 1.2));
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, calc(var(--shell-opacity) * 0.28)),
+        inset 20px 14px 38px rgba(255, 255, 255, calc(var(--shell-opacity) * 0.24)),
+        inset -24px -34px 56px rgba(4, 32, 22, calc(var(--shell-opacity) * 0.34)),
+        0 16px 56px rgba(25, 99, 61, calc(var(--shell-opacity) * 0.24));
+    }
+
+    .asset-sphere video {
+      position: absolute;
+      left: var(--video-x);
+      top: var(--video-y);
+      z-index: 1;
+      display: block;
+      width: 176%;
+      height: 109%;
+      object-fit: cover;
+      filter: saturate(1.06) contrast(1.06) brightness(0.98);
+      transform: translate(-50%, -50%) scale(var(--video-scale));
+      transform-origin: center;
+      clip-path: inset(0);
+      backface-visibility: hidden;
+    }
+
+    .asset-floor-glow {
+      position: fixed;
+      left: 50%;
+      bottom: 8vh;
+      z-index: 11;
+      width: min(54vw, 720px);
+      height: min(13vw, 150px);
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(111, 236, 159, 0.23), rgba(62, 124, 83, 0.08) 44%, transparent 76%);
+      filter: blur(28px);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .asset-controls {
+      position: fixed;
+      right: 28px;
+      top: 82px;
+      z-index: 14;
+      display: grid;
+      gap: 14px;
+      width: min(320px, calc(100vw - 32px));
+      padding: 18px;
+      border: 1px solid var(--asset-panel-border);
+      border-radius: 10px;
+      background: var(--asset-panel);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        0 18px 56px rgba(18, 45, 33, 0.13);
+      color: var(--asset-ink);
+      backdrop-filter: blur(18px) saturate(1.1);
+    }
+
+    .asset-controls h2 {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .asset-control-buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .asset-control {
+      display: grid;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--asset-muted);
+    }
+
+    .asset-control-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .asset-controls input[type="range"] {
+      width: 100%;
+      accent-color: #35c878;
+    }
+
+    .asset-controls button {
+      min-height: 36px;
+      border: 1px solid var(--asset-panel-border);
+      border-radius: 8px;
+      background: var(--asset-button);
+      color: var(--asset-ink);
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .asset-status {
+      margin: 0;
+      color: var(--asset-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
     @media (max-width: 860px) {
       .landing {
         align-items: flex-start;
@@ -450,6 +678,34 @@
       .prototype-grid {
         grid-template-columns: 1fr;
       }
+
+      .asset-note {
+        left: 22px;
+        right: 22px;
+        top: 82px;
+      }
+
+      .asset-copy {
+        display: none;
+      }
+
+      .asset-sphere {
+        --asset-size: min(78vw, 520px);
+      }
+
+      .asset-controls {
+        left: 16px;
+        right: 16px;
+        top: auto;
+        bottom: 16px;
+        width: auto;
+      }
+
+      .asset-screen .back-home {
+        left: 16px;
+        right: auto;
+        top: 18px;
+      }
     }
 
   </style>
@@ -463,7 +719,7 @@
       </div>
       <p class="landing-kicker">Prototype review</p>
       <h1 class="landing-title" id="landing-title">Genifi visual system prototypes</h1>
-      <p class="landing-copy">Choose a workstream preview. The globe prototype is active; implementation and brand asset directions are staged for the next pass.</p>
+      <p class="landing-copy">Choose a workstream preview. The globe prototype and Direction D brand asset are active; implementation notes are staged for the next pass.</p>
       <div class="prototype-grid" aria-label="Prototype options">
         <button class="prototype-option" type="button" data-view="prototype">
           <span class="option-index">01</span>
@@ -475,10 +731,10 @@
           <span class="option-title">Globe web implementation</span>
           <span class="option-meta">Coming soon. Production translation and implementation notes.</span>
         </button>
-        <button class="prototype-option" type="button" data-status="Brand asset prototype is coming soon. Direction D will live here.">
+        <button class="prototype-option" type="button" data-view="brand-asset">
           <span class="option-index">03</span>
           <span class="option-title">Brand asset</span>
-          <span class="option-meta">Coming soon. Direction D supporting asset exploration.</span>
+          <span class="option-meta">Direction D supporting liquid-glass asset preview.</span>
         </button>
       </div>
       <p class="landing-status" id="landingStatus" role="status"></p>
@@ -556,6 +812,34 @@
     <div class="grain"></div>
   </div>
 
+  <section class="asset-screen is-hidden" id="brandAssetScreen" aria-labelledby="asset-title">
+    <button class="back-home" id="assetBackHome" type="button">Back</button>
+    <div class="asset-note">
+      <p class="asset-kicker">Genifi / Direction D</p>
+      <h1 class="asset-title" id="asset-title">Brand supporting asset</h1>
+      <p class="asset-copy">Soft liquid-glass motion for secondary brand moments, product sections, and visual system applications.</p>
+    </div>
+    <div class="asset-sphere" aria-hidden="true">
+      <video src="liquid-glass-sphere-firefly.mp4?v=brand-asset-1" autoplay muted loop playsinline preload="auto"></video>
+    </div>
+    <div class="asset-floor-glow" aria-hidden="true"></div>
+    <aside class="asset-controls" aria-label="Brand asset controls">
+      <h2>Preview controls</h2>
+      <label class="asset-control">
+        <span class="asset-control-row">
+          <span>Asset size</span>
+          <strong data-asset-value="size">512</strong>
+        </span>
+        <input type="range" min="360" max="760" step="1" value="512" data-asset-control="size">
+      </label>
+      <div class="asset-control-buttons">
+        <button type="button" data-asset-action="theme">Toggle theme</button>
+        <button type="button" data-asset-action="pause">Pause motion</button>
+      </div>
+      <p class="asset-status">Clean video-only prototype. CSS rim sits on the same circular crop.</p>
+    </aside>
+  </section>
+
   <script src="https://unpkg.com/globe.gl"></script>
   <script type="module">
     import {
@@ -583,21 +867,21 @@
       .showAtmosphere(false);
 
     const scene = globe.scene();
-    scene.add(new AmbientLight("#d9eadb", 0.9));
+    scene.add(new AmbientLight("#c8ddd0", 0.72));
 
-    const keyLight = new DirectionalLight("#d7ebdc", 0.72);
-    keyLight.position.set(-230, 34, 210);
+    const keyLight = new DirectionalLight("#f4fff7", 0.92);
+    keyLight.position.set(-245, 54, 220);
     scene.add(keyLight);
 
-    const fillLight = new DirectionalLight("#a7d6b8", 0.72);
+    const fillLight = new DirectionalLight("#78a890", 0.42);
     fillLight.position.set(150, -60, 130);
     scene.add(fillLight);
 
-    const rimLight = new PointLight("#74d89d", 1.15, 420);
-    rimLight.position.set(-120, -150, 230);
+    const rimLight = new PointLight("#2f7653", 1.95, 470);
+    rimLight.position.set(-150, -130, 240);
     scene.add(rimLight);
 
-    const hemiLight = new HemisphereLight("#e5f2e5", "#b4d4bd", 0.68);
+    const hemiLight = new HemisphereLight("#eff8ef", "#47715c", 0.58);
     scene.add(hemiLight);
 
     const createMicroTexture = () => {
@@ -649,28 +933,121 @@
 
     const microTexture = createMicroTexture();
 
+    const createGlassVeilTexture = () => {
+      const size = 1024;
+      const canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, size, size);
+
+      const drawGlassRibbon = (points, width, color, blur, alpha = 1) => {
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.shadowColor = color;
+        ctx.shadowBlur = blur;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.beginPath();
+        ctx.moveTo(points[0][0], points[0][1]);
+        for (let i = 1; i < points.length; i += 3) {
+          const p1 = points[i];
+          const p2 = points[i + 1];
+          const p3 = points[i + 2];
+          if (!p1 || !p2 || !p3) break;
+          ctx.bezierCurveTo(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1]);
+        }
+        ctx.stroke();
+        ctx.restore();
+      };
+
+      drawGlassRibbon([[70, 225], [270, 120], [520, 170], [900, 66], [1050, 52], [1110, 120], [930, 225]], 92, "rgba(238, 255, 247, 0.08)", 32, 1);
+      drawGlassRibbon([[0, 360], [230, 300], [410, 405], [620, 335], [820, 265], [980, 275], [1060, 390]], 58, "rgba(33, 87, 67, 0.045)", 22, 1);
+      drawGlassRibbon([[90, 420], [315, 335], [470, 500], [710, 445], [880, 405], [990, 450], [1080, 535]], 34, "rgba(230, 255, 245, 0.09)", 18, 1);
+      drawGlassRibbon([[130, 650], [330, 565], [505, 620], [705, 560], [870, 520], [965, 580], [1030, 710]], 75, "rgba(108, 167, 137, 0.04)", 28, 1);
+      drawGlassRibbon([[640, 82], [760, 110], [800, 215], [715, 300], [620, 365], [680, 425], [860, 430]], 18, "rgba(18, 55, 43, 0.035)", 12, 0.86);
+
+      const grain = ctx.createImageData(size, size);
+      for (let i = 0; i < grain.data.length; i += 4) {
+        const v = Math.random() * 255;
+        grain.data[i] = v;
+        grain.data[i + 1] = v;
+        grain.data[i + 2] = v;
+        grain.data[i + 3] = Math.random() * 10;
+      }
+      ctx.putImageData(grain, 0, 0);
+
+      const texture = new CanvasTexture(canvas);
+      texture.wrapS = RepeatWrapping;
+      texture.wrapT = RepeatWrapping;
+      texture.repeat.set(1, 1);
+      return texture;
+    };
+
+    const glassVeilTexture = createGlassVeilTexture();
+
     const milkGlassSurface = new Mesh(
       new SphereGeometry(99.7, 160, 160),
       new MeshPhysicalMaterial({
-        color: new Color("#cbe4d2"),
-        roughness: 0.82,
-        metalness: 0.02,
-        transmission: 0,
-        thickness: 0.72,
-        transparent: false,
-        opacity: 1,
-        clearcoat: 0.3,
-        clearcoatRoughness: 0.9,
-        sheen: 0.28,
-        sheenRoughness: 0.88,
-        sheenColor: new Color("#f3fff5"),
-        specularIntensity: 0.16,
+        color: new Color("#b8ddca"),
+        roughness: 0.48,
+        metalness: 0.01,
+        transmission: 0.32,
+        thickness: 1.45,
+        transparent: true,
+        opacity: 0.68,
+        clearcoat: 0.82,
+        clearcoatRoughness: 0.42,
+        sheen: 0.36,
+        sheenRoughness: 0.58,
+        sheenColor: new Color("#dff4e8"),
+        specularIntensity: 0.72,
         specularColor: new Color("#f6fff7"),
         bumpMap: microTexture,
-        bumpScale: 0.42
+        bumpScale: 0.2,
+        depthWrite: true
       })
     );
     scene.add(milkGlassSurface);
+
+    const innerDepthShell = new Mesh(
+      new SphereGeometry(99.25, 96, 96),
+      new MeshBasicMaterial({
+        color: new Color("#315f49"),
+        transparent: true,
+        opacity: 0.16,
+        side: BackSide,
+        depthWrite: false
+      })
+    );
+    scene.add(innerDepthShell);
+
+    const glassRimShell = new Mesh(
+      new SphereGeometry(100.35, 128, 128),
+      new MeshBasicMaterial({
+        color: new Color("#1f5b42"),
+        transparent: true,
+        opacity: 0.075,
+        side: BackSide,
+        blending: AdditiveBlending,
+        depthWrite: false
+      })
+    );
+    scene.add(glassRimShell);
+
+
+    const liquidGlassVeil = new Mesh(
+      new SphereGeometry(100.72, 160, 160),
+      new MeshBasicMaterial({
+        map: glassVeilTexture,
+        transparent: true,
+        opacity: 0.18,
+        depthWrite: false
+      })
+    );
+    scene.add(liquidGlassVeil);
 
     fetch("https://cdn.jsdelivr.net/npm/world-atlas/land-110m.json")
       .then((res) => res.json())
@@ -681,26 +1058,26 @@
           .polygonsData(land)
           .polygonAltitude(0.012)
           .polygonCapMaterial(new MeshPhysicalMaterial({
-            color: new Color("#8bc6a1"),
+            color: new Color("#6daf8b"),
             transparent: true,
-            opacity: 0.36,
-            roughness: 0.88,
-            clearcoat: 0.18,
-            clearcoatRoughness: 0.96,
+            opacity: 0.42,
+            roughness: 0.58,
+            clearcoat: 0.42,
+            clearcoatRoughness: 0.58,
             side: DoubleSide,
             bumpMap: microTexture,
             bumpScale: 0.18
           }))
           .polygonSideColor(() => "rgba(0,0,0,0)")
-          .polygonStrokeColor(() => "rgba(53,124,89,0.42)");
+          .polygonStrokeColor(() => "rgba(22,92,62,0.5)");
       });
 
     const innerGlow = new Mesh(
       new SphereGeometry(100.2, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#d9f0df"),
+        color: new Color("#6daf8b"),
         transparent: true,
-        opacity: 0.035,
+        opacity: 0.045,
         side: BackSide,
         blending: AdditiveBlending,
         depthWrite: false
@@ -711,9 +1088,9 @@
     const outerShell = new Mesh(
       new SphereGeometry(100.4, 64, 64),
       new MeshBasicMaterial({
-        color: new Color("#d6ecdd"),
+        color: new Color("#235d43"),
         transparent: true,
-        opacity: 0.026,
+        opacity: 0.035,
         wireframe: false,
         blending: AdditiveBlending,
         depthWrite: false
@@ -746,13 +1123,30 @@
     const prototypeScreen = document.getElementById("prototypeScreen");
     const landingStatus = document.getElementById("landingStatus");
     const backHome = document.getElementById("backHome");
+    const brandAssetScreen = document.getElementById("brandAssetScreen");
+    const assetBackHome = document.getElementById("assetBackHome");
+    const assetSphere = brandAssetScreen.querySelector(".asset-sphere");
+    const assetVideo = brandAssetScreen.querySelector("video");
+    const assetSizeControl = brandAssetScreen.querySelector("[data-asset-control='size']");
+    const assetSizeValue = brandAssetScreen.querySelector("[data-asset-value='size']");
+    const assetThemeAction = brandAssetScreen.querySelector("[data-asset-action='theme']");
+    const assetPauseAction = brandAssetScreen.querySelector("[data-asset-action='pause']");
 
     document.querySelectorAll(".prototype-option").forEach((button) => {
       button.addEventListener("click", () => {
         if (button.dataset.view === "prototype") {
           landingView.classList.add("is-hidden");
+          brandAssetScreen.classList.add("is-hidden");
           prototypeScreen.classList.remove("is-hidden");
           requestAnimationFrame(resize);
+          return;
+        }
+
+        if (button.dataset.view === "brand-asset") {
+          landingView.classList.add("is-hidden");
+          prototypeScreen.classList.add("is-hidden");
+          brandAssetScreen.classList.remove("is-hidden");
+          assetVideo.play().catch(() => {});
           return;
         }
 
@@ -762,8 +1156,36 @@
 
     backHome.addEventListener("click", () => {
       prototypeScreen.classList.add("is-hidden");
+      brandAssetScreen.classList.add("is-hidden");
       landingView.classList.remove("is-hidden");
       landingStatus.textContent = "";
+    });
+
+    assetBackHome.addEventListener("click", () => {
+      brandAssetScreen.classList.add("is-hidden");
+      prototypeScreen.classList.add("is-hidden");
+      landingView.classList.remove("is-hidden");
+      landingStatus.textContent = "";
+    });
+
+    assetThemeAction.addEventListener("click", () => {
+      brandAssetScreen.dataset.theme = brandAssetScreen.dataset.theme === "dark" ? "" : "dark";
+    });
+
+    assetPauseAction.addEventListener("click", (event) => {
+      if (assetVideo.paused) {
+        assetVideo.play().catch(() => {});
+        event.currentTarget.textContent = "Pause motion";
+      } else {
+        assetVideo.pause();
+        event.currentTarget.textContent = "Resume motion";
+      }
+    });
+
+    assetSizeControl.addEventListener("input", (event) => {
+      const size = event.currentTarget.value;
+      assetSphere.style.setProperty("--asset-size", `${size}px`);
+      assetSizeValue.textContent = size;
     });
 
   </script>
